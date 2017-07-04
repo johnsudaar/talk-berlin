@@ -24,6 +24,8 @@ func main() {
 		f.Close()
 	})
 
+	http.Handle("/static/", http.StripPrefix("/static", http.FileServer(http.Dir("static/"))))
+
 	log.Println("Listening on: " + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 
